@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pill-el{
+            display: flex;
+            justify-content: space-between;
+        }
+        .pill-date,.pill-pill{
+            display: flex;
+            width: 150px;
+            justify-content: space-between;
+        }
+        body{
+            margin-inline: 50px;
+        }
+        ul{
+            padding: 0px;
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+    <%- include("inputs") -%>
+    <ul>
+        <% jdata = data %>
+        <% for (const key in jdata) {
+            if (jdata.hasOwnProperty.call(jdata, key)) {
+                const element = jdata[key];
+                if(element["pill"]!=""&&element["pill"]!=null&&element["pill"]!=" "&&element["pill"]!="undefined"){
+                    // pills.push(element["pill"]);
+                    // ids.push(key);
+                    // console.log(key); 
+                    %>
+                    <li class="pill-el" id="pill-<%= key %>">
+                        <div class="pill-date" id="pill-<%= key %>-date">
+                            <form action="/scripts" method="post">
+                                <input type="submit" value="del">
+                                <input type="hidden" name="func" value="del">
+                                <input type="hidden" name="pill" value="<%= key %>">
+                            </form>
+
+                            <%= element["date"] %>    
+                        </div>
+                        <div class="pill-comment" id="pill-<%= key %>-comment">
+                            <%= element["comment"] %>    
+                        </div>
+                        <div class="pill-pill" id="pill-<%= key %>-pill">
+                            <%= element["pill"] %>
+
+                            <form action="/edit" method="post">
+                                <input type="submit" value="edit">
+                                <input type="hidden" name="func" value="edit">
+                                <input type="hidden" name="name" value="<%= key %>">
+                                <input type="hidden" name="date" value="<%= element["date"] %>">
+                                <input type="hidden" name="pill" value="<%= element["pill"] %>">
+                                <input type="hidden" name="comment" value="<%= element["comment"] %>">
+                            </form>
+                        </div>
+                       
+                        
+                    </li>
+                    <%
+                }
+            }
+        } %>
+    </ul>
+</body>
+</html>

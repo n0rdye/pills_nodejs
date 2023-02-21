@@ -1,0 +1,14 @@
+<style>
+    *{
+        text-align: center;
+    }
+</style>
+<form action="/scripts" method="post">
+    <input type="hidden" name="name" value="<%= name %>">
+    <input type="text" name="pill" value="<%= pill %>">
+    <input type="text" name="date" value="<%= date %>">
+    <input type="text" name="comment" value="<%= comment %>">
+    <input type="hidden" name="func" value="edit">
+    <input type="submit" name="mode" value="save">
+    <input type="submit" name="mode" value="cancel">
+</form>

@@ -1,0 +1,7 @@
+services:
+  pills:
+    image: n0rdye/pills
+    ports:
+      - 8080:8080
+    volumes:
+      - ./:/usr/src/app

@@ -1,7 +1,8 @@
 services:
   pills:
     image: n0rdye/pills
+    container_name: nodejs_pills
     ports:
-      - 8080:8080
+      - 70:8080
     volumes:
       - ./:/usr/src/app

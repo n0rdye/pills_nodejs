@@ -84,8 +84,12 @@ function jwrite(jdata){
         }
     })
 }
+
+
+
 function jwrite_pill(name,pill,date,comment){
-    comment = (comment==""||comment==null&&comment==" ")? "-":comment;
+    comment = (comment==""||comment==null||comment==" "||comment==undefined||comment=="  ")? "-":comment;
+    // console.log(comment,"||");
     fs.readFile('./pills.json','utf8',(err,data)=>{
         let jdata = JSON.parse(data);
         jdata[name] = {

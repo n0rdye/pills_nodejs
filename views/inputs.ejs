@@ -32,13 +32,14 @@
         let pills = ["4/2","4/1","4","2","2/1","1","0"];
         let i=0;
         pills.forEach(el => {
+            let check = (el=="4")? "checked":"";
             %>
-                <li class="pill"><label for="<%= i %>"><%= el %></label> <input id="<%= i %>" type="radio" name="pill" value="<%= el %>"></li>
+                <li class="pill"><label for="<%= i %>"><%= el %></label> <input id="<%= i %>" type="radio" name="pill" value="<%= el %>" <%= check %>></li>
             <%
             i++;
         });
     %>
     </ul>
-    <input type="text" name="comment" value="-" placeholder="comment">
+    <input type="text" name="comment" value=" " placeholder="comment">
     <input type="hidden" name="func" value="save">
 </form>
